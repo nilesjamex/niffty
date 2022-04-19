@@ -1,0 +1,28 @@
+@mixin access {
+    font-family: 'CircularStd', sans-serif;
+    font-size: 1.125rem;
+    line-height: 23px;
+    color: #000000;
+    @content;
+}
+@mixin heading1 {
+    font-family: 'CircularStd', sans-serif;
+    font-size: 2.5rem;
+    line-height: 51px;
+    color: #000000;
+    @content;
+}
+@mixin heading2 {
+    font-family: 'CircularStd', sans-serif;
+    font-size: 1.5rem;
+    line-height: 30px;
+    color: #000000;
+    @content;
+}
+@mixin caption {
+    font-family: 'CircularStd', sans-serif;
+    font-size: 1.3rem;
+    line-height: 27px;
+    color: #000000;
+    @content;
+}

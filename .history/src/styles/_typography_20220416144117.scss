@@ -1,0 +1,7 @@
+@mixin access {
+    font-family: 'Circular Std';
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+    @content;
+}

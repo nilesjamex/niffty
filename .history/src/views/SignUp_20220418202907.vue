@@ -1,0 +1,238 @@
+<template>
+  <section class="signup">
+      <div class="signup--box">
+          <div class="signup--intro">
+              <div class="signup--intro--logo">
+                  <img src="@/assets/logo.svg" alt="">
+              </div>
+              <div class="signup--intro--content">
+                  <div class="signup--intro--content--img">
+                      <img src="@/assets/girl.svg" alt="">
+                  </div>
+                  <div class="signup--intro--content--text">
+                      <h2>
+                          <span>Welcome!</span> Let’s get to know you.
+                      </h2>
+                      <p>
+                          Your first step toward a better financial lifestyle starts here.
+                      </p>
+                  </div>
+              </div>
+          </div>
+          <!-- form -->
+          <div class="signup--form">
+              <form action="" @submit.prevent="submit">
+                  <div class="signup--form--container">
+                      <div class="signup--form--name--box">
+                           <p v-if="showError" id="error">Username already exists</p>
+                          <div class="signup--form--name">
+                              <label>First Name</label>
+                              <input type="text" name="" v-model="form.firstname" placeholder="Enter First Name" id="" required>
+                          </div>
+                          <div class="signup--form--name">
+                              <label>Last Name</label>
+                              <input type="text" name="" v-model="form.lastName" placeholder="Enter Last Name" id="" required>
+                          </div>
+                      </div>
+                      <div class="signup--form--input">
+                          <label>Email address</label>
+                          <input type="email" name="" v-model="form.email" placeholder="Enter Email" id="" required>
+                      </div>
+                      <div class="signup--form--input">
+                          <label>Password</label>
+                          <input type="password" name="" v-model="form.password" placeholder="Enter Password" id="" required>
+                      </div>
+                      <div class="signup--form--input">
+                          <label>Confirm Password</label>
+                          <input type="password" name="" v-model="form.password_confirmation" placeholder="Confirm Password" id="" required>
+                      </div>
+                      <button class="button--submit">
+                          SIGN UP
+                      </button>
+                      <div class="signup--form--login">
+                          <p>
+                              Already have an account? <span><a href="/login">Login Here</a></span>
+                          </p>
+                      </div>
+                  </div>
+              </form>
+               <div class="signup--form--terms">
+              <p>
+                  By clicking on Login, you agree to our <span>Terms & Conditions and Privacy Policy</span>
+              </p>
+          </div>
+          </div>
+      </div>
+  </section>
+</template>
+
+<script>
+import axios from "axios"
+export default {
+data() {
+    return {
+        form: {
+        firstname: "",
+        lastName: "",
+        email: "",
+        password: "",
+        password_confirmation: ""
+      },
+      showError: false
+    }
+},
+methods: {
+    submit() {
+        const headers = {
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': true,
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer API_TOKEN'
+        };
+        const payload = JSON.stringify(this.form);
+    axios.post('https://campaign.fundall.io/api/v1/register', {headers: headers}, payload)
+    .then(
+        res => {
+            console.log(res)
+        }
+    )
+    .catch (
+        err => {
+            console.log(err)
+        }
+    )
+    }
+
+    // ...mapActions(["Register"]),
+    // async submit() {
+    //   try {
+    //     await this.Register(this.form);
+    //     this.$router.push("/dashboard");
+    //     this.showError = false
+    //   } catch (error) {
+    //     this.showError = true
+    //   }
+    // },
+}
+}
+</script>
+
+<style lang="scss" scoped>
+@import '@/styles/mixins.scss';
+@import '@/styles/_variables.scss';
+@import '@/styles/_typography.scss';
+.signup {
+    padding: 5rem 7% 5rem 3%;
+    background: #FCFBFC;
+}
+.signup--box {
+    @include flex(space-between,);
+}
+.signup--intro--content {
+    width: 600px;
+    margin-top: 2rem;
+}
+.signup--intro--content {
+    text-align: center;
+}
+.signup--intro--content--text {
+    text-align: center;
+    h2 {
+        text-align: left;
+        width: 369px;
+        margin: 1.5rem auto 0 auto;
+        @include heading1 {
+        }
+        span {
+             @include heading1 {
+            color: $access-bg;
+        }
+        }
+    }
+    p {
+        text-align: left;
+        @include caption;
+        width: 374px;
+        margin: 2rem auto 0 auto;
+    }
+}
+form {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.082937);
+    border-radius: 6px;
+    width: 592px;
+    height: 635px;
+    padding: 2rem 1rem;
+}
+.signup--form--container {
+    margin: 0 auto;
+    width: 450px;
+}
+label {
+    display: block;
+    margin: 0.4rem 0;
+    @include input {
+        font-size: 16px;
+        line-height: 20px;
+        color: #30443C;
+    }
+}
+::placeholder {
+    @include placeholder;
+}
+.signup--form--name--box {
+    width: 400px;
+    @include flex(space-between,);
+    input {
+        background: #FFFFFF;
+        border: 1px solid #CAD0C9;
+        box-sizing: border-box;
+        border-radius: 4px;
+        width: 180px;
+        height: 45px;
+        padding: 0.5rem;
+        @include input;
+        
+    }
+}
+.signup--form--input {
+    margin: 1.5rem 0;
+    input {
+    width: 400px;
+    height: 45px;
+    background: #FFFFFF;
+    border: 1px solid #CAD0C9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 0.5rem;
+    }
+}
+button {
+    margin: 2.5rem 0;
+}
+.signup--form--login {
+    margin: 3rem auto 0 auto;
+    max-width: 100%;
+    width: 287.43px;
+    p {
+        @include login;
+        span {
+            color: $access-bg;
+        }
+    }
+}
+.signup--form--terms {
+    margin: 1.5rem auto 0 auto;
+    max-width: 100%;
+    width: 405px;
+    text-align: center;
+    p {
+        @include login {
+            color: #97A19D;
+        }
+        span {
+            color: $access-bg;
+        }
+    }
+}
+</style>

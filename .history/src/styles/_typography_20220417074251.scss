@@ -1,0 +1,71 @@
+@mixin access {
+    font-family: 'CircularStd', sans-serif;
+    font-size: 1.125rem;
+    line-height: 23px;
+    color: #000000;
+    @content;
+}
+@mixin heading1 {
+    font-family: 'CircularStd', sans-serif;
+    font-size: 2.5rem;
+    line-height: 51px;
+    color: #000000;
+    @content;
+}
+@mixin heading2 {
+    font-family: 'CircularStd', sans-serif;
+    font-size: 1.5rem;
+    line-height: 30px;
+    color: #000000;
+    @content;
+}
+@mixin caption {
+    font-family: 'CircularStd', sans-serif;
+    font-size: 1.3rem;
+    line-height: 27px;
+    color: #000000;
+    @content;
+}
+@mixin input {
+    font-family: 'CircularStd', sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 23px;
+    color: #30443C;
+    @content;
+}
+@mixin placeholder {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #30443C;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    @content;
+}
+@mixin login {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1B2420;
+    @content;
+}
+@mixin holla {
+    font-family: 'CircularStd', sans-serif;
+    font-style: normal;
+    font-size: 34px;
+    line-height: 43px;
+    color: #1B2420;
+    @content;
+}
+@mixin holla-sign {
+    font-family: 'CircularStd', sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 25px;
+    color: #30443C;
+}
